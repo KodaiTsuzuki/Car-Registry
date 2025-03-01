@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>New Car Registration</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>Register a New Car</h1>
+        <form action="{{ url_for('register') }}" method="post">
+            <!-- Registration Number フィールドは削除 -->
+            <label for="Brand">Brand:</label>
+            <input type="text" id="Brand" name="Brand" required><br><br>
+            
+            <label for="Model">Model:</label>
+            <input type="text" id="Model" name="Model" required><br><br>
+            
+            <label for="Color">Color:</label>
+            <input type="text" id="Color" name="Color" required><br><br>
+            
+            <label for="Contact Information">Contact Information:</label>
+            <input type="text" id="Contact Information" name="Contact Information" required><br><br>
+            
+            <label for="Vehicle ID Number">Vehicle ID Number:</label>
+            <input type="text" id="Vehicle ID Number" name="Vehicle ID Number" required><br><br>
+            
+            <input type="submit" value="Register Car">
+        </form>
+        <a href="{{ url_for('index') }}">Back to Car List</a>
+    </body>
+</html>

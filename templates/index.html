@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Car Registration</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>Car Registry</h1>
+        <h2>List of Cars</h2>
+        {% if Cars == [] %}
+            <p>No Registration</p>
+        {% else %}
+        <table border="1">
+            <tr>
+                <th>Registration Number</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Color</th>
+                <th>Contact Information</th>
+                <th>Vehicle Id Number</th>
+                <th>Actions</th>
+            </tr>
+            {% for registry in Cars %}
+                <tr>
+                    <td>{{ registry['Registration Number'] }}</td>
+                    <td>{{ registry['Brand'] }}</td>
+                    <td>{{ registry['Model'] }}</td>
+                    <td>{{ registry['Color'] }}</td>
+                    <td>{{ registry['Contact Information'] }}</td>
+                    <td>{{ registry['Vehicle ID Number'] }}</td>
+                    <td>
+                        <form action="{{ url_for('delete') }}" method="post">
+                            <input type="hidden" name="Registration Number" value="{{ registry['Registration Number'] }}">
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+        {% if error %}
+        <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <a href="{{ url_for('form') }}">New Registration</a>
+    </body>
+</html>
